@@ -41,6 +41,27 @@ const Example = () => {
       .reduce((sumVal, fruit) => sumVal + fruit.value, 0);
     setSum(sumVal);
   };
+
+  const handleChange2 = (e) => {
+    const newFruits = fruits.map((fruit) => {
+      const newFruit = { ...fruit };
+      if (newFruit.label === e.target.value) {
+        newFruit.checked = !fruit.checked;
+      }
+      return newFruit;
+    });
+
+    setFruits(newFruits);
+
+    let sumVal = 0;
+    newFruits.forEach((fruit) => {
+      if (fruit.checked) {
+        sumVal += fruit.value;
+      }
+    });
+    setSum(sumVal);
+  };
+
   return (
     <div>
       {fruits.map((fruit) => {
@@ -51,7 +72,7 @@ const Example = () => {
               type="checkbox"
               value={fruit.label}
               checked={fruit.checked}
-              onChange={handleChange}
+              onChange={handleChange2}
             />
             <label htmlFor={fruit.label}>
               {fruit.label}:{fruit.value}
