@@ -4,7 +4,7 @@
 
 import { ENDPOINT } from "@/constants";
 
-export async function createItem(formData) {
+export async function createItem(state, formData) {
   const id = formData.get("id");
   const title = formData.get("title");
 
@@ -21,7 +21,7 @@ export async function createItem(formData) {
       body: JSON.stringify({ id, title }),
     });
     const data = await res.json();
-    return data;
+    return { msg: `${data.id}:${data.title}の登録が完了しました。` };
   } catch (e) {
     return { msg: "登録に失敗しました" };
   }
