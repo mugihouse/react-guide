@@ -2,15 +2,17 @@
 
 import { createItem } from "@/actions/createItem";
 import { useState } from "react";
+import { useFormState } from "react-dom";
 
 export default function ArticleForm() {
   const [newId, setNewId] = useState();
   const [newTitle, setNewTitle] = useState();
 
+  const [state, createItemAction] = useFormState(createItem, { msg: null });
   return (
     // server actionを使用するときにはaction属性にサーバでの処理を定義した関数を設定
     // method属性を定義するとエラーになるので注意
-    <form action={createItem}>
+    <form action={createItemAction}>
       <div>
         <label>
           {" "}
@@ -35,7 +37,7 @@ export default function ArticleForm() {
         </label>
       </div>
       <button type="submit">送信</button>
-      <div style={{ color: "red" }}></div>
+      <div style={{ color: "red" }}>{state.msg}</div>
     </form>
   );
 }
