@@ -3,9 +3,10 @@ const Greet = () => {
     <div>
       <form>
         <h1>こんにちは</h1>
+        <h2>こんばんは</h2>
         <input type="radio" />
         <label htmlFor="fullname">氏名</label>
-        <input id="fullname" type="text" placeholder="氏名" />
+        <input id="fullname" type="text" placeholder="Code Mafia" />
         <button>ボタン１</button>
         <button>ボタン２</button>
         <img src="/logo512.png" alt="React Logo" />
